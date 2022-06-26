@@ -1,4 +1,8 @@
-bodyS {
+body {
     margin: 0;
-    background-color: green;
+}
+
+img {
+    height: 100px;
+    width: auto;
 }
