@@ -27,7 +27,11 @@ For your README, delete this blockquote and fill in the lists below.
 
 MVP Criteria
 One thing my game must do to meet my minimum standard.
-it must have a character and be able to shoot zombies and add those zombies to a kill tracker
+have a character // green for now // object to track data
+have zombies // red for now //object to track data
+have zombies move 
+have zombies clickable
+have a counter for dead zombies
 Another thing.
 the playable character must have a health bar
 Etc.
@@ -35,6 +39,7 @@ Post-MVP Plans
 One great idea I hope to be able to add in before the project deadline.
 is to have the character be able to move away from the zombies 
 Another that will be a stretch.
+adding structure
 will be able to choose my difficulty setting so that i can pick an easier mode.
 Something else I don't technically know how to do... yet. :)
 adding in items that can be picked up to upgrade my character
