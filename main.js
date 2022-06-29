@@ -8,6 +8,8 @@ function newPlayer(url, left, bottom) {
     document.body.append(player)
     return player
 }
+let player = newPlayer('assets/placeholder.png',650,250)
+let playerHealth = 100 
 ///creates a zombie
 function newZombie (left, bottom) {
     let zombie = document.createElement('img')
@@ -27,7 +29,7 @@ function moveZombieRight(zombie) {
     console.log(zombie.style.left)
     let myInterval = setInterval(() => {
         zombie.style.left = parseInt(zombie.style.left) + 1 + 'px'
-        if(parseInt(zombie.style.left) == 650) {
+        if(parseInt(zombie.style.left) == parseInt(player.style.left)) {
             clearInterval(myInterval)
         }
     },10)
@@ -37,7 +39,7 @@ function moveZombieUp(zombie) {
     console.log(zombie.style.bottom)
     let myInterval = setInterval(() => {
         zombie.style.bottom = parseInt(zombie.style.bottom) + 1 + 'px'
-        if(parseInt(zombie.style.bottom) == 250) {
+        if(parseInt(zombie.style.bottom) == parseInt(player.style.bottom)) {
             clearInterval(myInterval)
         }
     },10)
@@ -47,7 +49,7 @@ function moveZombieLeft(zombie) {
     console.log(zombie.style.left)
     let myInterval = setInterval(() => {
         zombie.style.left = parseInt(zombie.style.left) - 1 + 'px'
-        if(parseInt(zombie.style.left) == 650) {
+        if(parseInt(zombie.style.left) == parseInt(player.style.left)) {
             clearInterval(myInterval)
         }
     },10)
@@ -57,7 +59,7 @@ function moveZombieDown(zombie) {
     console.log(zombie.style.bottom)
     let myInterval = setInterval(() => {
         zombie.style.bottom = parseInt(zombie.style.bottom) - 1 + 'px'
-        if(parseInt(zombie.style.bottom) == 250) {
+        if(parseInt(zombie.style.bottom) == parseInt(player.style.bottom)) {
                 clearInterval(myInterval)
         }
     },10)
@@ -106,19 +108,13 @@ let horde = setInterval(()=>{
         if(spawnPoint === 8) {
         spawn(-100,500)
         }
-        if(spawnPoint === 0) {
+        if(playerHealth === 0) {
             clearInterval(horde)
         }
-},1000);
+},400);
 
 
     
-
-
-
-
-
-newPlayer('assets/placeholder.png',650,250)
 
 
 
