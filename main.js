@@ -80,38 +80,110 @@ function spawn(left,bottom) {
         moveZombieDown(zombie)
     }
 }
+let start = 1
+let button = document.createElement('button')
+button.innerHTML = 'Start';
+console.log(button)
+button.onclick = function() {
+    let horde = setInterval(()=>{
+        let spawnPoint = Math.floor(Math.random() * 9);
+        console.log(spawnPoint)
+        if(spawnPoint === 1) {
+            spawn(-100,1000)
+            }
+            if(spawnPoint === 2) {
+            spawn(800,1000)
+            }
+            if(spawnPoint === 3) {
+            spawn(1600,1000)
+            }
+            if(spawnPoint === 4) {
+            spawn(1600,400)
+            }
+            if(spawnPoint === 5) {
+            spawn(1600,-100)
+            }
+            if(spawnPoint === 6) {
+            spawn(800,-100)
+            }
+            if(spawnPoint === 7) {
+            spawn(-100,-100)
+            }
+            if(spawnPoint === 8) {
+            spawn(-100,500)
+            }
+            if(playerHealth === 0) {
+                clearInterval(horde)
+            }
+    },400);
+    
+}
+document.body.append(button)
 
-let horde = setInterval(()=>{
-    let spawnPoint = Math.floor(Math.random() * 9);
-    console.log(spawnPoint)
-    if(spawnPoint === 1) {
-        spawn(-100,1000)
-        }
-        if(spawnPoint === 2) {
-        spawn(800,1000)
-        }
-        if(spawnPoint === 3) {
-        spawn(1600,1000)
-        }
-        if(spawnPoint === 4) {
-        spawn(1600,400)
-        }
-        if(spawnPoint === 5) {
-        spawn(1600,-100)
-        }
-        if(spawnPoint === 6) {
-        spawn(800,-100)
-        }
-        if(spawnPoint === 7) {
-        spawn(-100,-100)
-        }
-        if(spawnPoint === 8) {
-        spawn(-100,500)
-        }
-        if(playerHealth === 0) {
-            clearInterval(horde)
-        }
-},400);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let horde = setInterval(()=>{
+//     let spawnPoint = Math.floor(Math.random() * 9);
+//     console.log(spawnPoint)
+//     if(spawnPoint === 1) {
+//         spawn(-100,1000)
+//         }
+//         if(spawnPoint === 2) {
+//         spawn(800,1000)
+//         }
+//         if(spawnPoint === 3) {
+//         spawn(1600,1000)
+//         }
+//         if(spawnPoint === 4) {
+//         spawn(1600,400)
+//         }
+//         if(spawnPoint === 5) {
+//         spawn(1600,-100)
+//         }
+//         if(spawnPoint === 6) {
+//         spawn(800,-100)
+//         }
+//         if(spawnPoint === 7) {
+//         spawn(-100,-100)
+//         }
+//         if(spawnPoint === 8) {
+//         spawn(-100,500)
+//         }
+//         if(playerHealth === 0) {
+//             clearInterval(horde)
+//         }
+// },400);
 
 
     
