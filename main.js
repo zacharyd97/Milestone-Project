@@ -1,3 +1,8 @@
+let deadZombie = 0;
+let player = newPlayer('assets/placeholder.png',700,250)
+let playerHealth = 100 
+
+
 /// creates a player
 function newPlayer(url, left, bottom) {
     let player = document.createElement('img')
@@ -8,10 +13,9 @@ function newPlayer(url, left, bottom) {
     document.body.append(player)
     return player
 }
-let player = newPlayer('assets/placeholder.png',650,250)
-let playerHealth = 100 
 ///creates a zombie
 function newZombie (left, bottom) {
+    let score = document.getElementById("score").innerHTML = "SCORE:" + deadZombie;
     let zombie = document.createElement('img')
     zombie.src = 'assets/8-bit-zombie.png'
     zombie.style.position = 'fixed'
@@ -19,14 +23,14 @@ function newZombie (left, bottom) {
     zombie.style.bottom = bottom + 'px'
     document.body.append(zombie)
     zombie.addEventListener('click',e => {
-        console.log('dead z')
-        zombie.style.display = 'none'
+        zombie.remove()
+        return deadZombie += 1
+        console.log(deadZombie)
     })
     return zombie
 }
 ///moves a zombie right
 function moveZombieRight(zombie) {
-    console.log(zombie.style.left)
     let myInterval = setInterval(() => {
         zombie.style.left = parseInt(zombie.style.left) + 1 + 'px'
         if(parseInt(zombie.style.left) == parseInt(player.style.left)) {
@@ -36,7 +40,6 @@ function moveZombieRight(zombie) {
 }
 ///moves a zombie up
 function moveZombieUp(zombie) {
-    console.log(zombie.style.bottom)
     let myInterval = setInterval(() => {
         zombie.style.bottom = parseInt(zombie.style.bottom) + 1 + 'px'
         if(parseInt(zombie.style.bottom) == parseInt(player.style.bottom)) {
@@ -46,7 +49,6 @@ function moveZombieUp(zombie) {
 }
 ///moves a zombie left
 function moveZombieLeft(zombie) {
-    console.log(zombie.style.left)
     let myInterval = setInterval(() => {
         zombie.style.left = parseInt(zombie.style.left) - 1 + 'px'
         if(parseInt(zombie.style.left) == parseInt(player.style.left)) {
@@ -56,7 +58,6 @@ function moveZombieLeft(zombie) {
 }
 /// moves a zombie down
 function moveZombieDown(zombie) {
-    console.log(zombie.style.bottom)
     let myInterval = setInterval(() => {
         zombie.style.bottom = parseInt(zombie.style.bottom) - 1 + 'px'
         if(parseInt(zombie.style.bottom) == parseInt(player.style.bottom)) {
@@ -64,30 +65,41 @@ function moveZombieDown(zombie) {
         }
     },10)
 }  
+function collisionCheck(zombie) {
 
+    let myInterval = setInterval(() => {
+        if(parseInt(zombie.style.left)== parseInt(player.style.left) 
+        && parseInt(zombie.style.bottom) === parseInt(player.style.bottom) ) {
+        clearInterval(myInterval)
+        alert('GAME OVER! YOU DIED')
+        document.location.reload()
+    }
+    },10)
+}
+
+///evaluates where a zombie needs to go
 function spawn(left,bottom) {
     const zombie = newZombie(left,bottom)
-    if(left < 650) {
+    if(left < parseInt(player.style.left)) {
         moveZombieRight(zombie)
     }
-    if(left > 650) {
+    if(left > parseInt(player.style.left)) {
         moveZombieLeft(zombie)
     }
-    if(bottom < 250) {
+    if(bottom < parseInt(player.style.bottom)) {
         moveZombieUp(zombie)
     }
-    if(bottom > 250) {
+    if(bottom > parseInt(player.style.bottom)) {
         moveZombieDown(zombie)
     }
+    collisionCheck(zombie)
 }
-let start = 1
+
 let button = document.createElement('button')
 button.innerHTML = 'Start';
-console.log(button)
 button.onclick = function() {
     let horde = setInterval(()=>{
         let spawnPoint = Math.floor(Math.random() * 9);
-        console.log(spawnPoint)
         if(spawnPoint === 1) {
             spawn(-100,1000)
             }
@@ -112,82 +124,8 @@ button.onclick = function() {
             if(spawnPoint === 8) {
             spawn(-100,500)
             }
-            if(playerHealth === 0) {
-                clearInterval(horde)
-            }
+
     },400);
-    
+button.style.display = 'none';
 }
 document.body.append(button)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let horde = setInterval(()=>{
-//     let spawnPoint = Math.floor(Math.random() * 9);
-//     console.log(spawnPoint)
-//     if(spawnPoint === 1) {
-//         spawn(-100,1000)
-//         }
-//         if(spawnPoint === 2) {
-//         spawn(800,1000)
-//         }
-//         if(spawnPoint === 3) {
-//         spawn(1600,1000)
-//         }
-//         if(spawnPoint === 4) {
-//         spawn(1600,400)
-//         }
-//         if(spawnPoint === 5) {
-//         spawn(1600,-100)
-//         }
-//         if(spawnPoint === 6) {
-//         spawn(800,-100)
-//         }
-//         if(spawnPoint === 7) {
-//         spawn(-100,-100)
-//         }
-//         if(spawnPoint === 8) {
-//         spawn(-100,500)
-//         }
-//         if(playerHealth === 0) {
-//             clearInterval(horde)
-//         }
-// },400);
-
-
-    
-
-
-
-

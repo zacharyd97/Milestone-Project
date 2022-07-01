@@ -1,5 +1,7 @@
-body {
-    margin: 0;
+button {
+    width: 200px;
+    height: 50px;
+    font-size: larger;
 }
 
 img {
