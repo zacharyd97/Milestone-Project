@@ -7,24 +7,28 @@ let playerHealth = 100
 function newPlayer(url, left, bottom) {
     let player = document.createElement('img')
     player.src = url
+    player.setAttribute('draggable',false)
     player.style.position = 'fixed'
     player.style.left = left + 'px'
     player.style.bottom = bottom + 'px'
     document.body.append(player)
     return player
+
 }
 ///creates a zombie
 function newZombie (left, bottom) {
     let score = document.getElementById("score").innerHTML = "SCORE:" + deadZombie;
     let zombie = document.createElement('img')
     zombie.src = 'assets/8-bit-zombie.png'
+    zombie.setAttribute('draggable',false)
     zombie.style.position = 'fixed'
     zombie.style.left = left + 'px'
     zombie.style.bottom = bottom + 'px'
     document.body.append(zombie)
     zombie.addEventListener('click',e => {
-        zombie.style.bottom = '-10000000000000000000000000px'
-        zombie.style.left = '-1000000000000000000000000000000px'
+        zombie.style.bottom = null
+        zombie.style.left = null
+        zombie.remove()
         console.log('deadZ')
         deadZombie += 1;
     })
