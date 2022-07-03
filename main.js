@@ -1,5 +1,5 @@
 let deadZombie = 0;
-let player = newPlayer('assets/player1.png',750,300)
+let player = newPlayer('assets/player1.png',550,250)
 let playerHealth = 100 
 
 
