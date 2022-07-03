@@ -1,5 +1,5 @@
 let deadZombie = 0;
-let player = newPlayer('assets/placeholder.png',700,250)
+let player = newPlayer('assets/player1.png',750,300)
 let playerHealth = 100 
 
 
@@ -23,9 +23,10 @@ function newZombie (left, bottom) {
     zombie.style.bottom = bottom + 'px'
     document.body.append(zombie)
     zombie.addEventListener('click',e => {
-        zombie.remove()
-        return deadZombie += 1
-        console.log(deadZombie)
+        zombie.style.bottom = '-10000000000000000000000000px'
+        zombie.style.left = '-1000000000000000000000000000000px'
+        console.log('deadZ')
+        deadZombie += 1;
     })
     return zombie
 }
@@ -65,33 +66,35 @@ function moveZombieDown(zombie) {
         }
     },10)
 }  
-function collisionCheck(zombie) {
 
+
+function collisionCheck(zombie) {
     let myInterval = setInterval(() => {
-        if(parseInt(zombie.style.left)== parseInt(player.style.left) 
+        if(parseInt(zombie.style.left) === parseInt(player.style.left) 
         && parseInt(zombie.style.bottom) === parseInt(player.style.bottom) ) {
         clearInterval(myInterval)
         alert('GAME OVER! YOU DIED')
         document.location.reload()
-    }
-    },10)
+        }
+    },1)
 }
 
 ///evaluates where a zombie needs to go
 function spawn(left,bottom) {
     const zombie = newZombie(left,bottom)
     if(left < parseInt(player.style.left)) {
-        moveZombieRight(zombie)
+    moveZombieRight(zombie)
     }
     if(left > parseInt(player.style.left)) {
-        moveZombieLeft(zombie)
+    moveZombieLeft(zombie)
     }
     if(bottom < parseInt(player.style.bottom)) {
-        moveZombieUp(zombie)
+    moveZombieUp(zombie)
     }
     if(bottom > parseInt(player.style.bottom)) {
-        moveZombieDown(zombie)
-    }
+    moveZombieDown(zombie)
+    }  
+    
     collisionCheck(zombie)
 }
 
@@ -125,7 +128,7 @@ button.onclick = function() {
             spawn(-100,500)
             }
 
-    },400);
+    },800);
 button.style.display = 'none';
 }
 document.body.append(button)
